@@ -1,2 +1,6 @@
 # XJCP-Protocol-Specification
-The 
+
+The protocol specification.
+
+XJCP.md
+SXJCP.md
