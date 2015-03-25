@@ -17,8 +17,10 @@ XJCP stands for Extensible Json Chat Protocol. The main goal of the protocol is 
 ## Communication Channel
 
 The communication is done via https.
-Some servers and clients may support and use sockets instead to be more efficient.
+Some servers and clients may support and use ssl-sockets instead to be more efficient.
 However all clients and servers must support https as a fallback when no socket is supported.
+
+Http and sockets that are not secured by ssl are not allowed.
 
 You may send data to the server as POST or GET variable „msg“ for the normal protocol or „m“ for the minified protocol. When both variables are declared the normal protocol will be prefered and the minified protocol ignored.
 
@@ -32,6 +34,33 @@ Socket connections behave differently they send events just when they occur inde
 Everything else works as normal response like with https.
 
 Therfore, it is recommended that https clients do a clever ping loop to get events and try to handle events on each packet they receive.
+
+### Examples
+
+Assume you want to send the following simple packet with no data in it.
+```json
+{"id":"<id>"}
+```
+
+Https requests with GET
+```
+https://www.yourserver.de/xjcp2.php?msg=%7B"id"%3A"<id>"%7D
+```
+To encode the data correctly in c# for example simply use
+```cs
+json = "{\"id\":\"<id>\"}";
+uri = "https://www.yourserver.de/xjcp2.php?msg=" + Uri.EscapeDataString (json);
+```
+
+As https POST request at https://www.yourserver.de/xjcp2.php the post data is
+```
+msg=%7B"id"%3A"<id>"%7D
+```
+
+Using a ssl-socket connection you should send (or expect)
+```
+msg:{"id":"<id>"}\n
+```
 
 ## JSON-Objects
 
