@@ -90,8 +90,9 @@ as what output attribute the server will set and what objects that attribute wil
 Mini is the identifier used in the minified protocol. The minified protocol may only be used on
 mobile devices.
 
-Mini Input-Attribute Output-Attribute Input Object Output Object
-i id id String String
+Mini | Input-Attribute | Output-Attribute | Input Object | Output Object
+--- | --- | --- | --- | ---
+i | id | id | String | String
 u, p user, pw user, pw String String
 e - events - [Event]
 c getChats onGetChats {} [ChatObject]
