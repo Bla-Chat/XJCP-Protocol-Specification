@@ -90,33 +90,25 @@ as what output attribute the server will set and what objects that attribute wil
 Mini is the identifier used in the minified protocol. The minified protocol may only be used on
 mobile devices.
 
-Mini | Input-Attribute | Output-Attribute | Input Object | Output Object
---- | --- | --- | --- | ---
-i | id | id | String | String
-u, p user, pw user, pw String String
-e - events - [Event]
-c getChats onGetChats {} [ChatObject]
-k getContacts onGetContacts {} [ContactObject]
-h getHistory onGetHistory [{conversation,
-count}]
-[History]
-m message onMessage [{conversation,
-message}]
-[String]
-d removeEvent - [{conversation}] -
-n newConversation onNewConversation [{conversation}] [String]
-r renameConversation onRenameConversation [{conversation,
-name}]
-[String]
-sN setName - String -
-aF addFriend onAddFriend [String] [String]
-sS setStatus - Integer -
-sP setProfileImage onSetProfileImage {} String
-sG setGroupImage onSetGroupImage {conversation} String
-iE injectEvent onInjectEvent [{conversation, type,
-message}]
-[String]
-da data onData {conversation} String
+Mini | Input-Attribute    | Output-Attribute     | Input Object                   | Output Object
+---- | ------------------ | -------------------- | ------------------------------ | -------------
+i    | id                 | id                   | String                         | String
+u, p | user, pw           | user, pw             | String                         | String
+e    | -                  | events               | -                              | [Event]
+c    | getChats           | onGetChats           | {}                             | [ChatObject]
+k    | getContacts        | onGetContacts        | {}                             | [ContactObject]
+h    | getHistory         | onGetHistory         | [{conversation,count}]         | [History]
+m    | message            | onMessage            | [{conversation,message}]       | [String]
+d    | removeEvent        | -                    | [{conversation}]               | -
+n    | newConversation    | onNewConversation    | [{conversation}]               | [String]
+r    | renameConversation | onRenameConversation | [{conversation,name}]          | [String]
+sN   | setName            | -                    | String                         | -
+aF   | addFriend          | onAddFriend          | [String]                       | [String]
+sS   | setStatus          | -                    | Integer                        | -
+sP   | setProfileImage    | onSetProfileImage    | {}                             | String
+sG   | setGroupImage      | onSetGroupImage      | {conversation}                 | String
+iE   | injectEvent        | onInjectEvent        | [{conversation, type,message}] | [String]
+da   | data               | onData               | {conversation}                 | String
 
 {} means that this must be not null
 
